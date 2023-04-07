@@ -1,0 +1,92 @@
+.dateTimeCard {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  align-items: center;
+}
+
+.dateTimeCard-hero {
+  flex: 4;
+  margin-right: 10px;
+}
+
+.dateTimeCard-hero > h2 {
+  font-size: 40px;
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.dateTimeCard-hero > p {
+  font-size: 16px;
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.dateTimeCard-card {
+  padding: 20px;
+  flex: 6;
+  display: flex;
+  flex-direction: row;
+  border-radius: 30px;
+  border: 1px solid var(--md-sys-color-on-primary-fixed-light);
+}
+
+.dateTimeCard-card > div > select {
+  width: 100%;
+}
+
+.dateTimeCard-card > div > select,
+.dateTimeCard-card-date > div > input,
+.dateTimeCard-card-time > div > input {
+  margin-top: 5px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  background-color: var(--md-sys-color-primary-container-light);
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.dateTimeCard-card > div > select:focus {
+  outline: none;
+}
+
+.dateTimeCard-card > div {
+  flex: 1;
+}
+
+.HiLocationMarker,
+.BsFillCalendarWeekFill,
+.MdWatchLater {
+  margin-right: 7px;
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.dateTimeCard-card > div:first-child {
+  margin-right: 20px;
+}
+
+.dateTimeCard-card > div > label,
+.dateTimeCard-card-date > div > label,
+.dateTimeCard-card-time > div > label {
+  display: inline-block;
+  font-size: 20px;
+  color: var(--md-sys-color-on-primary-container-light);
+  font-weight: 400;
+}
+
+.dateTimeCard-card-date {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.dateTimeCard-card-date,
+.dateTimeCard-card-time {
+  justify-content: space-between;
+}
+
+.dateTimeCard-card-time {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}

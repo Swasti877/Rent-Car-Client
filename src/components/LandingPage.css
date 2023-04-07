@@ -1,0 +1,72 @@
+.landingPage1 {
+  display: flex;
+}
+
+.landingPage1-desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+.landingPage1-desc div:last-child {
+  margin-top: 10px;
+  padding-left: 70%;
+}
+
+.headline h1 {
+  font-size: 50px;
+  color: var(--md-sys-color-on-primary-fixed-light);
+}
+
+.subheadline {
+  font-size: 20px;
+  color: var(--md-sys-color-primary-light);
+}
+
+.landingPage1-img {
+  flex: 1;
+}
+
+.landingPage1-img img:first-child {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.landingPage1-img img:last-child {
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  z-index: -1;
+  width: 50%;
+}
+
+.landingPage1-img-map {
+  background-image: url("../res/map.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  z-index: -1;
+  box-shadow: 0 0 20px 20px white inset;
+}
+
+@media screen and (max-width: 1007px) {
+  .landingPage1 {
+    display: block;
+    height: auto;
+  }
+
+  .landingPage1-desc {
+    height: 300px;
+  }
+
+  .landingPage1-img-map {
+    top: 60%;
+    width: 50%;
+  }
+}

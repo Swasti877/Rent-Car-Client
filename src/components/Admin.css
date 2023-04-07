@@ -1,0 +1,34 @@
+.admin {
+  display: flex;
+  flex-direction: row;
+}
+
+.adminSideBar {
+  flex: 1.5;
+  background-color: var(--md-sys-color-primary-container-light);
+  padding: 20px 12px 20px 0;
+}
+
+.adminSideBar > div {
+  border-radius: 0 30px 30px 0;
+}
+
+.adminSideBar > div:hover {
+  background-color: var(--md-sys-color-primary-light);
+  cursor: pointer;
+}
+
+.adminSideBar div h2 {
+  padding-left: 20px;
+}
+
+.adminSideBar div h2:hover {
+    padding-left: 20px;
+    color: var(--md-sys-color-on-primary-light);
+  }
+
+.adminBody {
+  flex: 8.5;
+  height: 100vh;
+  background-color: var(--md-sys-color-on-primary-light);
+}

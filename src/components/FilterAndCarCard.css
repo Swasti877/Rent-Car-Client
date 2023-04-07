@@ -1,0 +1,59 @@
+.filterAndCarCard {
+  background-color: var(--md-sys-color-primary-container-light);
+  display: flex;
+  /* height: 1000px; */
+  width: 100%;
+}
+
+.filter {
+  background-color: var(--md-sys-color-on-primary-light);
+  margin: 20px 16px 20px 32px;
+  flex: 2;
+  height: fit-content;
+  padding: 13px 20px;
+  border: 1px solid var(--md-sys-color-on-primary-container-light);
+  border-radius: 30px;
+}
+
+.filter-title {
+  font-size: 32px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted var(--md-sys-color-on-primary-container-light);
+}
+
+.filter-carType,
+.filter-carMake,
+.filter-capacity {
+  margin-top: 20px;
+}
+
+.filter-carType-checkboxs,
+.filter-carMake-checkboxs,
+.filter-capacity-checkboxs {
+  margin-top: 10px;
+}
+
+.filter-carMake-checkboxs > label,
+.filter-carType-checkboxs > label,
+.filter-capacity-checkboxs > label {
+  padding-left: 10px;
+}
+
+.filter-carMake-checkboxs > input,
+.filter-carType-checkboxs > input,
+.filter-capacity-checkboxs > input {
+  accent-color: var(--md-sys-color-on-primary-container-light);
+  width: 15px;
+  height: 15px;
+}
+
+.carCards {
+  margin: 20px 32px 20px 16px;
+  flex: 8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

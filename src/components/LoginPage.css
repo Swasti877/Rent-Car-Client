@@ -1,0 +1,32 @@
+.loginPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.loginPage-img {
+    flex: 6;
+}
+
+.loginPage-img > div:first-child {
+    background-image: url("../res/map.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    z-index: -1;
+    box-shadow: 0 0 20px 20px white inset;
+}
+
+.loginPage-img > img:last-child {
+    width: 100%;
+}
+
+.loginPage-form {
+    background-color: var(--md-sys-color-primary-container-light);
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

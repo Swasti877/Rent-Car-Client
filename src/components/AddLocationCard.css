@@ -1,0 +1,24 @@
+.addLocationCard {
+  background-color: var(--md-sys-color-primary-container-light);
+  padding: 20px 12px;
+  border-radius: 30px;
+}
+
+.addLocationCard > form > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.addLocationCard > form > div:first-child {
+  justify-content: end;
+}
+
+.addLocationCard > form > div:last-child {
+  justify-content: center;
+}
+
+.addLocationCard > form > div > label {
+  flex: 2;
+}

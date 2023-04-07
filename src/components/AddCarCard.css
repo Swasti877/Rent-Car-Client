@@ -1,0 +1,24 @@
+.addCarCard {
+  background-color: var(--md-sys-color-primary-container-light);
+  padding: 20px 12px;
+  border-radius: 30px;
+}
+
+.addCarCard > form > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.addCarCard > form > div:first-child {
+  justify-content: end;
+}
+
+.addCarCard > form > div:last-child {
+  justify-content: center;
+}
+
+.addCarCard > form > div > label {
+  flex: 2;
+}

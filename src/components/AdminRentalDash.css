@@ -1,0 +1,17 @@
+.adminRentalDash {
+  padding: 20px 12px;
+}
+
+.adminRentalDash-desc-table {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.adminRentalDash-desc-table table tr {
+  padding-top: 10px 0;
+}
+
+.adminRentalDash-desc-table > table > tr:nth-child(odd) {
+  background-color: var(--md-sys-color-primary-container-light);
+}

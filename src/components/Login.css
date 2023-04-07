@@ -1,0 +1,93 @@
+.Login {
+  background-color: var(--md-sys-color-on-primary-light);
+  width:400px;
+  border-radius: 30px;
+  padding: 20px 12px;
+}
+
+.login-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px dotted var(--md-sys-color-on-primary-container-light);
+    padding-bottom: 10px;
+}
+
+.login-username , .login-password{
+    display: flex;
+    flex-direction: row;
+}
+
+.login-username > label, .login-password > label {
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+.login-username > input, .login-password > input {
+    flex: 8;
+    color: var(--md-sys-color-on-primary-container-light);
+    background-color: var(--md-sys-color-primary-container-light);
+}
+
+.login-username > input, .login-password > input {
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 30px;
+}
+
+.login-username > input:focus, .login-password > input:focus {
+    outline: none;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.login-button > button {
+    width: 100%;
+}
+
+.login-signupPage-link, .login-password, .login-username {
+    margin-top: 10px;
+}
+
+.login-signupPage-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.login-signupPage-link > a{
+    color: #4CB5F9;
+    text-decoration: none;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.login-error {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: var(--md-sys-color-error-light);
+    font-weight: 700;
+}
+
+.login-button-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-button-text > div {
+    color: white !important;
+}
+
+.riLoginBoxFill {
+    background-color: white !important;
+    margin-left: 10px;
+}

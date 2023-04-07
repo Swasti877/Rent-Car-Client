@@ -1,0 +1,45 @@
+.carCard {
+  background-color: var(--md-sys-color-on-primary-light);
+  height: 266px;
+  width: 300px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.carCard-title {
+  font-size: 22px;
+}
+
+.carCard-carType {
+  font-size: 17px;
+  color: var(--md-ref-palette-primary30);
+}
+
+.carCard-img {
+  width: 100%;
+  height: 180px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.carCard-img > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cardCard-desc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardCard-desc-price > span {
+  font-weight: 700;
+}
+
+.bsFillPersonFill,
+.giGearStickPattern {
+  margin-right: 5px;
+}

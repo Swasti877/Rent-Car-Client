@@ -1,0 +1,27 @@
+.LandingPage2 {
+  background-color: var(--md-sys-color-primary-container-light);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.title > h1 {
+  font-size: 50px;
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.title > p {
+  font-size: 20px;
+  color: var(--md-sys-color-on-primary-container-light);
+}
+
+.card-carousel {
+  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+}

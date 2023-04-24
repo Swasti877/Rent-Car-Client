@@ -3,6 +3,7 @@ import counterReducer from "../slice/counterSlice.js";
 import carsReducer from "../slice/carsSlice.js";
 import locationReducer from "../slice/locationSlice.js";
 import rentalReducer from "../slice/rentalSlice.js";
+import bookDetailsReducer from "../slice/bookDetailsSlice.js";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     cars: carsReducer,
     locations: locationReducer,
     rentals: rentalReducer,
+    bookDetails: bookDetailsReducer,
   },
 });
 

@@ -8,6 +8,7 @@ import { TiTick } from "react-icons/ti";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useEffect } from "react";
 import carAPIFetchFun from "../Functions/carAPIFetch";
+import topFunction from "../Functions/scrollToPage";
 
 const AdminCarDash = ({ props }) => {
   const { API_URL } = config;
@@ -23,6 +24,7 @@ const AdminCarDash = ({ props }) => {
   const handleCarEdit = (e, car) => {
     setIsModalOpen(true);
     dispatch(currCarDataUpdate(car));
+    topFunction();
   };
 
   const handleAddCar = () => {

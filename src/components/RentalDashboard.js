@@ -1,6 +1,6 @@
 import "./RentalDashboard.css";
 import DateTimeCard from "./DateTimeCard.js";
-import FilterAndCarCard from './FilterAndCarCard';
+import FilterAndCarCard from "./FilterAndCarCard";
 
 function RentalDashboard() {
   return (

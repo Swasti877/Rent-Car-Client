@@ -43,7 +43,11 @@ export default function Login({ props }) {
     const json = await response.json();
     if (json.success) {
       localStorage.setItem("token", json.token);
-      navigate("/");
+      if (json.isAdmin) {
+        navigate("/admin/car");
+      } else {
+        navigate("/");
+      }
     } else {
       setLoginState({
         ...setLoginState,

@@ -1,9 +1,30 @@
+import { useEffect
+ } from "react";
 import "./DateTimeCard.css";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdWatchLater } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import locationFetchAPI from "../Functions/locationFetchAPI";
+import { deleteAllErrors, updateBookDetails } from "../slice/bookDetailsSlice";
 
 function DateTimeCard() {
+  const locationsArray = useSelector((state) => state.locations.locationsArray);
+  const bookDetails = useSelector((state) => state.bookDetails.bookDetails);
+  const errors = useSelector((state) => state.bookDetails.errors);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    locationFetchAPI.fetchAllLocation(dispatch);
+  }, []);
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    if (value === "Select") value = "";
+    dispatch(updateBookDetails({ name, value }));
+    dispatch(deleteAllErrors());
+  };
+
   return (
     <>
       <div className="dateTimeCard">
@@ -13,55 +34,141 @@ function DateTimeCard() {
             Renting a car brings you freedom, and we'll help you find the best
             car for you at a great price
           </p>
+          {errors.value && (
+            <p
+              style={{
+                color: "var(--md-sys-color-error-light)",
+                fontWeight: 700,
+              }}
+            >
+              {errors.errorsArray[0].msg}
+            </p>
+          )}
         </div>
         <div className="dateTimeCard-card">
           <div>
             <HiLocationMarker className="HiLocationMarker" />
-            <label for="pick-up">Pick-Up</label>
+            <label htmlFor="pick-up">Pick-Up</label>
             <br />
-            <select name="pick-up" id="pick-up">
-              <option value="mahesana">Mahesana</option>
-              <option value="ahmedabad">Ahmedabad</option>
-              <option value="gandhinagar">Gandhinagar</option>
+            <select
+              name="pickUp"
+              id="pick-up"
+              onChange={handleChange}
+              value={bookDetails.pickUp}
+              style={{
+                border: errors.value
+                  ? "2px solid var(--md-sys-color-error-light)"
+                  : "none",
+              }}
+            >
+              <option value={null}>Select</option>
+              {locationsArray.length !== 0 &&
+                locationsArray.map((location) => {
+                  return (
+                    <option key={location._id} value={location._id}>
+                      {location.locationName} ({location.address})
+                    </option>
+                  );
+                })}
             </select>
             <br />
             <div className="dateTimeCard-card-date">
               <div>
                 <BsFillCalendarWeekFill className="BsFillCalendarWeekFill" />
-                <label for="pick-up-date">Pick-up Date</label>
+                <label htmlFor="pick-up-date">Pick-up Date</label>
                 <br />
-                <input name="pick-up-date" id="pick-up-date" type="date" />
+                <input
+                  name="pickUpDate"
+                  id="pick-up-date"
+                  type="date"
+                  value={bookDetails.pickUpDate}
+                  onChange={handleChange}
+                  style={{
+                    border: errors.value
+                      ? "2px solid var(--md-sys-color-error-light)"
+                      : "none",
+                  }}
+                />
               </div>
               <div>
                 <BsFillCalendarWeekFill className="BsFillCalendarWeekFill" />
-                <label for="drop-off-date">Drop-off Date</label>
+                <label htmlFor="drop-off-date">Drop-off Date</label>
                 <br />
-                <input name="drop-off-date" id="drop-off-date" type="date" />
+                <input
+                  name="dropOffDate"
+                  id="drop-off-date"
+                  type="date"
+                  value={bookDetails.dropOffDate}
+                  onChange={handleChange}
+                  style={{
+                    border: errors.value
+                      ? "2px solid var(--md-sys-color-error-light)"
+                      : "none",
+                  }}
+                />
               </div>
             </div>
           </div>
           <div>
             <HiLocationMarker className="HiLocationMarker" />
-            <label for="drop-off">Drop-Off</label>
+            <label htmlFor="drop-off">Drop-Off</label>
             <br />
-            <select name="drop-off" id="drop-off">
-              <option value="mahesana">Mahesana</option>
-              <option value="ahmedabad">Ahmedabad</option>
-              <option value="gandhinagar">Gandhinagar</option>
+            <select
+              name="dropOff"
+              id="drop-off"
+              onChange={handleChange}
+              value={bookDetails.dropOff}
+              style={{
+                border: errors.value
+                  ? "2px solid var(--md-sys-color-error-light)"
+                  : "none",
+              }}
+            >
+              <option value={null}>Select</option>
+              {locationsArray.length !== 0 &&
+                locationsArray.map((location) => {
+                  return (
+                    <option value={location._id}>
+                      {location.locationName} ({location.address})
+                    </option>
+                  );
+                })}
             </select>
             <br />
             <div className="dateTimeCard-card-time">
               <div>
                 <MdWatchLater className="MdWatchLater" />
-                <label for="pick-up-time">Pick-up Time</label>
+                <label htmlFor="pick-up-time">Pick-up Time</label>
                 <br />
-                <input type="time" name="pick-up-time" id="pick-up-time" />
+                <input
+                  type="time"
+                  name="pickUpTime"
+                  id="pick-up-time"
+                  value={bookDetails.pickUpTime}
+                  onChange={handleChange}
+                  style={{
+                    border: errors.value
+                      ? "2px solid var(--md-sys-color-error-light)"
+                      : "none",
+                  }}
+                />
               </div>
               <div>
                 <MdWatchLater className="MdWatchLater" />
-                <label for="drop-off-time">Drop-off Time</label>
+                <label htmlFor="drop-off-time">Drop-off Time</label>
                 <br />
-                <input type="time" name="drop-off-time" id="drop-off-time" />
+                <input
+                  type="time"
+                  name="dropOffTime"
+                  id="drop-off-time"
+                  value={bookDetails.dropOffTime}
+                  onChange={handleChange}
+                  style={{
+                    border: errors.value
+                      ? "2px solid var(--md-sys-color-error-light)"
+                      : "none",
+                  }}
+                />
               </div>
             </div>
           </div>

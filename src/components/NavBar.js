@@ -2,6 +2,8 @@ import "./NavBar.css";
 import "../css/button.css";
 import logo from "../res/logo.svg";
 import { useNavigate } from "react-router-dom";
+import { FaHistory } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -21,16 +23,38 @@ export default function NavBar() {
       </div>
       <div className="navBar-link">
         <div>
-          <a href="#">About Us</a>
+          <Link to="#">About Us</Link>
         </div>
         <div>
-          <a href="/fleet">Cars</a>
+          <Link to="/fleet">Fleet</Link>
         </div>
         <div>
-          <a href="#">Help</a>
+          <Link to="#">Help</Link>
         </div>
         <div>
-          <button className="primary-button" onClick={()=>{navigate('/login')}}>Login</button>
+          <Link to="/orderHistory" className="navBar-History">
+            History <FaHistory className="FaHistory"/>
+          </Link>
+        </div>
+        <div>
+          {localStorage.getItem("token") === null ? (
+            <Link
+              className="primary-button"
+              to='/login'
+            >
+              Login
+            </Link>
+          ) : (
+            <Link
+              className="primary-button"
+              onClick={() => {
+                localStorage.removeItem("token");
+                navigate("/");
+              }}
+            >
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </header>

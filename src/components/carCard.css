@@ -1,27 +1,38 @@
 .carCard {
   background-color: var(--md-sys-color-on-primary-light);
-  height: 266px;
+  height: 300px;
   width: 300px;
   border-radius: 30px;
   padding: 20px;
   margin: 10px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carCard:hover {
+  transform: scale(1.05);
 }
 
 .carCard-title {
   font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--md-sys-color-on-primary-dark);
 }
 
 .carCard-carType {
   font-size: 17px;
   color: var(--md-ref-palette-primary30);
+  margin-bottom: 16px;
 }
 
 .carCard-img {
   width: 100%;
   height: 180px;
-  margin: 10px 0;
+  margin-bottom: 16px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .carCard-img > img {
@@ -33,13 +44,36 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .cardCard-desc-price > span {
   font-weight: 700;
+  font-size: 18px;
+  color: var(--md-sys-color-on-primary-dark);
+  margin-right: 8px;
 }
 
 .bsFillPersonFill,
 .giGearStickPattern {
   margin-right: 5px;
+  color: var(--md-sys-color-primary);
+}
+
+.book-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.carCard:hover .book-popup {
+  display: flex;
 }

@@ -1,45 +1,75 @@
 .navBar {
   display: flex;
-  background-color: var(--md-sys-color-primary-container-light);
+  justify-content: space-between;
   align-items: center;
+  background-color: var(--md-sys-color-primary-container-light);
+  color: var(--md-sys-color-on-primary-container-light);
+  padding: 10px 20px;
+  height: 60px;
 }
 
 .navBar-title {
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  margin-left: 20px;
-  font-weight: 400;
-  font-size: 40px;
-  color: var(--md-sys-color-on-primary-container-light);
   cursor: pointer;
+  font-size: 24px;
+}
+
+.navBar-title-logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.navBar-title-text {
+  font-weight: bold;
 }
 
 .navBar-link {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  justify-content: center;
 }
 
-.navBar-link div a {
-  padding: 10px 20px;
-  text-decoration: none;
+.navBar-link div {
+  margin: 0 5px;
+}
+
+.navBar-link a {
   color: var(--md-sys-color-on-primary-container-light);
-  font-weight: 400;
-  font-size: 30px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
-.navBar-link div a:hover {
+.navBar-link a:hover {
   background-color: var(--md-sys-color-primary-fixed-dim-light);
-  border-radius: 30px;
 }
 
-.navBar-link div a:last-child {
-  margin-right: 10px;
+.primary-button {
+  color: var(--md-sys-color-on-primary-light) !important;
+  background-color: var(--md-sys-color-on-primary-container-light);
+  border-radius: 4px;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.navBar-link div button {
-  padding: 10px 20px;
-  font-weight:400;
-  font-size: 30px;
+.primary-button:hover {
+  background-color: var(--md-sys-color-primary-fixed-dim-light);
+  color: var(--md-sys-color-on-primary-container-light) !important;
+}
+
+.navBar-History {
+  display: flex;
+  align-items: center;
+}
+
+.FaHistory {
+  margin-left: 5px;
 }

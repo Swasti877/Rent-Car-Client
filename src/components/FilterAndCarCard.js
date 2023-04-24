@@ -13,7 +13,6 @@ export default function FilterAndCarCard() {
   const groupByCarMakeType = useSelector(
     (state) => state.cars.groupByCarMakeType
   );
-
   const [carTypeFilters, setcarTypeFilters] = useState([]);
   const [carMakeFilters, setCarMakeFilters] = useState([]);
   const [filterArray, setFilterArray] = useState(carsArray);
@@ -25,7 +24,9 @@ export default function FilterAndCarCard() {
   }, []);
 
   useEffect(() => {
-    setFilterArray(carFilter.carFilter(carTypeFilters,carMakeFilters, carsArray));
+    setFilterArray(
+      carFilter.carFilter(carTypeFilters, carMakeFilters, carsArray)
+    );
   }, [carsArray, carTypeFilters, carMakeFilters]);
 
   const handleChange = (e) => {
@@ -38,7 +39,7 @@ export default function FilterAndCarCard() {
     const { name, checked } = e.target;
     if (checked) setCarMakeFilters([...carMakeFilters, name]);
     else setCarMakeFilters(carMakeFilters.filter((index) => index !== name));
-  }
+  };
 
   return (
     <>
@@ -66,7 +67,7 @@ export default function FilterAndCarCard() {
                         name={carType._id}
                         onChange={handleChange}
                       />
-                      <label for={carType._id}>
+                      <label htmlFor={carType._id}>
                         {carType._id}({carType.count})
                       </label>
                       <br />
@@ -92,7 +93,7 @@ export default function FilterAndCarCard() {
                         onChange={handleCarMakeChange}
                         key={carType._id}
                       />
-                      <label for={carType._id}>
+                      <label htmlFor={carType._id}>
                         {carType._id}({carType.count})
                       </label>
                       <br />
@@ -101,22 +102,11 @@ export default function FilterAndCarCard() {
                 })}
             </div>
           </div>
-
-          <div className="filter-capacity">
-            <div className="filter-capacity-title">Capacity</div>
-            <div className="filter-capacity-checkboxs">
-              <input type="checkbox" value="2to5" name="2to5" id="2to5" />
-              <label for="2to5">2- 5(100)</label>
-              <br />
-              <input type="checkbox" value="6>" name="6>" id="6>" />
-              <label for="6>">6 or more(4)</label>
-            </div>
-          </div>
         </div>
         {/* <CarCards /> */}
         <div className="carCards">
-          {carsArray.length !== 0 &&
-            carsArray.map((car) => {
+          {filterArray.length !== 0 &&
+            filterArray.map((car) => {
               return <CarCard props={{ car }} key={car._id} />;
             })}
         </div>

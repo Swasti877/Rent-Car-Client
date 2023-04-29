@@ -34,7 +34,7 @@ export default function PaymentForm({ props }) {
       "payment_intent_client_secret"
     );
 
-    const dataID = new URLSearchParams(window.location.href).get("data");
+    const dataID = new URLSearchParams(window.location.search).get("data");
 
     if (!clientSecret) {
       return;
@@ -48,8 +48,12 @@ export default function PaymentForm({ props }) {
             msg: "Payment succeeded!",
             _id: dataID,
           });
-          changePaymentStatusToTrue(dataID, "paymentStatus", true);
-          navigate(`/orderHistory?paymentIntentStatus=${paymentIntent.status}`) // after changing value navigate back to orderHistory Page
+          console.log("dataID >>", dataID);
+          changePaymentStatusToTrue(dataID).then(() => {
+            navigate(
+              `/orderHistory?paymentIntentStatus=${paymentIntent.status}`
+            ); // after changing value navigate back to orderHistory Page
+          });
           break;
         case "processing":
           setDetailsAfterTransaction({
@@ -76,15 +80,25 @@ export default function PaymentForm({ props }) {
     });
   }, [stripe]);
 
-  const changePaymentStatusToTrue = async (_id, colName, colValue) => {
-    await fetch(API_URL + "/rental/changeValue", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        _id,
-        colName,
-        colValue,
-      }),
+  const changePaymentStatusToTrue = (_id) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch(API_URL + "/rental/changeValue", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            _id,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to update payment status");
+        }
+
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
     });
   };
 

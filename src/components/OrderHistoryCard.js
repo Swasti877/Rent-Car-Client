@@ -47,7 +47,7 @@ const OrderHistoryCard = ({ order }) => {
               </div>
             </div>
             <div className="orderHistory-order-card-product-price">
-              <div>&#8377;{order.rentalPrice}</div>
+              <div>&#8377;{order.rentalPrice/100}</div>
               <div>{car.carType}</div>
             </div>
           </div>

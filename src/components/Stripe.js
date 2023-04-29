@@ -40,8 +40,6 @@ export default function Stripe() {
     })();
   }, []);
 
-  console.log(clientSecret);
-
   return (
     <>
       {clientSecret && (

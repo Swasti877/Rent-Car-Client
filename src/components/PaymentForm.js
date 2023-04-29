@@ -8,12 +8,16 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import config from "../constant";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentForm({ props }) {
   const { API_URL } = config;
+  const navigate = useNavigate();
   const { amount } = props;
-  const [message, setMessage] = useState("");
-  const [id, setId] = useState("");
+  const [detailsAfterTransaction, setDetailsAfterTransaction] = useState({
+    msg: "",
+    id: "",
+  });
   const cartCar = useSelector((state) => state.bookDetails.cartCar);
   const stripe = useStripe();
   const elements = useElements();
@@ -30,6 +34,8 @@ export default function PaymentForm({ props }) {
       "payment_intent_client_secret"
     );
 
+    const dataID = new URLSearchParams(window.location.href).get("data");
+
     if (!clientSecret) {
       return;
     }
@@ -37,22 +43,50 @@ export default function PaymentForm({ props }) {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
-          setMessage("Payment succeeded!");
+          setDetailsAfterTransaction({
+            ...detailsAfterTransaction,
+            msg: "Payment succeeded!",
+            _id: dataID,
+          });
+          changePaymentStatusToTrue(dataID, "paymentStatus", true);
+          navigate(`/orderHistory?paymentIntentStatus=${paymentIntent.status}`) // after changing value navigate back to orderHistory Page
           break;
         case "processing":
-          setMessage("Your payment is processing.");
+          setDetailsAfterTransaction({
+            ...detailsAfterTransaction,
+            msg: "Payment succeeded!",
+            _id: dataID,
+          });
           break;
         case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
+          setDetailsAfterTransaction({
+            ...detailsAfterTransaction,
+            msg: "Payment succeeded!",
+            _id: dataID,
+          });
           break;
         default:
-          setMessage("Something went wrong.");
+          setDetailsAfterTransaction({
+            ...detailsAfterTransaction,
+            msg: "Payment succeeded!",
+            _id: dataID,
+          });
           break;
       }
     });
   }, [stripe]);
 
-  console.log("cartCar >> ", cartCar);
+  const changePaymentStatusToTrue = async (_id, colName, colValue) => {
+    await fetch(API_URL + "/rental/changeValue", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        _id,
+        colName,
+        colValue,
+      }),
+    });
+  };
 
   // Function's
   const handleSubmit = async (e) => {
@@ -76,7 +110,8 @@ export default function PaymentForm({ props }) {
         },
         body: JSON.stringify({
           carID: car._id,
-          locationID: [bookDetails.pickUp, bookDetails.dropOff],
+          locationIDPickUp: bookDetails.pickUp,
+          locationIDDropOff: bookDetails.dropOff,
           userID: data._id,
           rentalStartDate: bookDetails.pickUpDate,
           rentalEndDate: bookDetails.dropOffDate,
@@ -87,25 +122,20 @@ export default function PaymentForm({ props }) {
         }),
       });
 
-      const data2 = await response2.json();
-      console.log("data>>", data2);
-
       if (response2.status === 200) {
-        setId(data._id);
+        const data = await response2.json();
+        const { error } = await stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            return_url: `http://localhost:3000/pay?data=${data._id}`,
+          },
+        });
+        if (error.type === "card_error" || error.type === "validation_error") {
+          alert(error.message);
+        } else {
+          alert("An unexpected error occurred.");
+        }
       }
-    }
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: `http://localhost:3000/pay?data=${id}`,
-      },
-    });
-
-    if (error.type === "card_error" || error.type === "validation_error") {
-      alert(error.message);
-    } else {
-      alert("An unexpected error occurred.");
     }
   };
 
@@ -123,7 +153,7 @@ export default function PaymentForm({ props }) {
           </button>
         </form>
       ) : (
-        <h2>{message}</h2>
+        <h2>{detailsAfterTransaction.msg}</h2>
       )}
     </>
   );

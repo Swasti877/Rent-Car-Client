@@ -31,11 +31,11 @@ export default function CarCard({ props }) {
       dispatch(updateErrors([{ msg: "Enter All Field Data" }]));
       topFunction();
     } else {
+      const obj = { bookDetails, car };
       if (
         DateAndTime.isCurrDateLess(bookDetails.pickUpDate) &&
         DateAndTime.isCurrDateLess(bookDetails.dropOffDate)
       ) {
-        const obj = { bookDetails, car };
         // checking if the pick Date and Drop Off Date are eqaul or not
         if (bookDetails.pickUpDate === bookDetails.dropOffDate) {
           const currDate = new Date();
@@ -64,8 +64,12 @@ export default function CarCard({ props }) {
           dispatch(resetBookDetails());
           navigate("/orderHistory");
         }
+      } else if(bookDetails.pickUpDate < bookDetails.dropOffDate) {
+        // Passed
+        dispatch(addToCart(obj));
+        dispatch(resetBookDetails());
+        navigate("/orderHistory");
       } else {
-        console.log("Date Error");
         dispatch(updateErrors([{ msg: "Date Are not Valid" }]));
       }
     }

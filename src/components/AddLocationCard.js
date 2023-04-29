@@ -104,6 +104,7 @@ export default function AddLocationCard({ props }) {
           <AiFillCloseCircle
             style={{ width: "20px", height: "20px" }}
             onClick={handleLocationModalCloseButton}
+            className="AiFillCloseCircle"
           />
         </div>
         <div>

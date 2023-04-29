@@ -142,13 +142,14 @@ export default function AddCarCard({ props }) {
 
   return (
     <div className="addCarCard">
-      <form encType="multipart/form-data" onSubmit={handleAddOrEditCar}>
         <div>
           <AiFillCloseCircle
+          className="AiFillCloseCircle"
             style={{ width: "20px", height: "20px" }}
             onClick={handleCarModalCloseButton}
           />
         </div>
+      <form encType="multipart/form-data" onSubmit={handleAddOrEditCar}>
         <div>
           <label htmlFor="make">Make</label>
           <input
@@ -247,13 +248,14 @@ export default function AddCarCard({ props }) {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="img_upload">
           <label htmlFor="img">Add Image</label>
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
             className="input"
             name="img"
+            id="img"
             onChange={handlePhoto}
           />
         </div>

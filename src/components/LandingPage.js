@@ -33,7 +33,7 @@ function LandingPage() {
           <div className="landingPage1-img-map" />
         </div>
       </div>
-      <LandingPage2 />
+      {/* <LandingPage2 /> */}
     </div>
   );
 }

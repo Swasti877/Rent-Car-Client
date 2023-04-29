@@ -5,7 +5,6 @@
 
 .adminSideBar {
   flex: 1.5;
-  background-color: var(--md-sys-color-primary-container-light);
   padding: 20px 12px 20px 0;
 }
 
@@ -13,7 +12,8 @@
   border-radius: 0 30px 30px 0;
 }
 
-.adminSideBar > div:hover {
+.adminSideBar > div:hover,
+.adminSideBar > .active {
   background-color: var(--md-sys-color-primary-light);
   cursor: pointer;
 }
@@ -23,9 +23,9 @@
 }
 
 .adminSideBar div h2:hover {
-    padding-left: 20px;
-    color: var(--md-sys-color-on-primary-light);
-  }
+  padding-left: 20px;
+  color: var(--md-sys-color-on-primary-light);
+}
 
 .adminBody {
   flex: 8.5;

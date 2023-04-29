@@ -60,6 +60,7 @@ export default function AddRentalCard({ props }) {
       <form>
         <div>
           <AiFillCloseCircle
+          className="AiFillCloseCircle"
             style={{ width: "20px", height: "20px" }}
             onClick={() => {
               setIsModalOpen(false);

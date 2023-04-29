@@ -20,5 +20,9 @@
 }
 
 .addLocationCard > form > div > label {
-  flex: 2;
+  flex: 4;
+}
+.addLocationCard > form > div > input {
+  flex: 6;
+  width: 100%;
 }

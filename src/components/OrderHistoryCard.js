@@ -1,35 +1,57 @@
+import { useEffect, useState } from "react";
 import "./OrderHistoryCard.css";
+import config from "../constant";
 
-const OrderHistoryCard = () => {
+const OrderHistoryCard = ({ order }) => {
+  const { API_URL } = config;
+  const [car, setCar] = useState({}); // A single car detail which is Yet to be fetched
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(API_URL + "/car/fetchACar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ _id: order.carID }),
+      });
+      if (response.status === 200) {
+        const data = await response.json();
+        setCar(data.car[0]);
+      }
+    })();
+  }, []);
+
   return (
     <article>
       <section className="orderHistory-order-card">
-        <div className="orderHistory-order-card-title">Order ID: 334902461</div>
+        <div className="orderHistory-order-card-title">
+          Order ID: {order._id}
+        </div>
         <div className="orderHistory-order-card-date">
-          <span>Order date:</span> &nbsp;<span>Feb 16, 2022</span>
+          <span>PickUp date:</span> &nbsp;<span>{order.rentalStartDate}</span>
         </div>
-        <div className="orderHistory-order-card-product">
-          <figure>
-            <img
-              src="https://imgd-ct.aeplcdn.com/370x208/n/cw/ec/106257/venue-exterior-right-front-three-quarter-2.jpeg"
-              alt="car"
-            />
-          </figure>
-          <div className="orderHistory-order-card-product-desc">
-            <div className="orderHistory-order-card-product-desc-title">
-              MacBook Pro 14"
+        {car && (
+          <div className="orderHistory-order-card-product">
+            <figure>
+              <img src={API_URL + `/car/fetchImage/${car.img}`} alt="car" />
+            </figure>
+            <div className="orderHistory-order-card-product-desc">
+              <div className="orderHistory-order-card-product-desc-title">
+                {car.make + " " + car.model}
+              </div>
+              <div>
+                <span>{car.color}</span>
+                <span>{car.mileage + "kmpl"}</span>
+                <span>{car.carType}</span>
+              </div>
             </div>
-            <div>
-              <span>Space Grey</span>
-              <span>32GB</span>
-              <span>1TB</span>
+            <div className="orderHistory-order-card-product-price">
+              <div>&#8377;{order.rentalPrice}</div>
+              <div>{car.carType}</div>
             </div>
           </div>
-          <div className="orderHistory-order-card-product-price">
-            <div>$2599.00</div>
-            <div>Something</div>
-          </div>
-        </div>
+        )}
       </section>
     </article>
   );

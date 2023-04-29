@@ -49,6 +49,11 @@
   background-color: var(--md-sys-color-primary-fixed-dim-light);
 }
 
+.navBar-link a.active {
+  background-color: var(--md-sys-color-primary-light);
+  color: var(--md-sys-color-on-primary-light) !important;
+}
+
 .primary-button {
   color: var(--md-sys-color-on-primary-light) !important;
   background-color: var(--md-sys-color-on-primary-container-light);

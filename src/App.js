@@ -14,6 +14,7 @@ import AddRentalModal from "./components/AddRentalModal.js";
 import AdminRentalDash from "./components/AdminRentalDash.js";
 import OrderHistory from "./components/OrderHistory";
 import Stripe from "./components/Stripe";
+import AboutUs from "./components/AboutUs.js";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,6 +41,15 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/about-us"
+            element={
+              <>
+                <NavBar />
+                <AboutUs />
+              </>
+            }
+          />
 
           <Route
             path="/login"
@@ -58,11 +68,14 @@ function App() {
               </>
             }
           />
-          <Route path="/pay" element={
-            <>
-              <Stripe />
-            </>
-          } />
+          <Route
+            path="/pay"
+            element={
+              <>
+                <Stripe />
+              </>
+            }
+          />
           <Route
             path="/admin/car"
             element={

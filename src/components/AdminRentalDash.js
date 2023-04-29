@@ -46,6 +46,8 @@ export default function AdminRentalDash({ props }) {
     }
   };
 
+  console.log(rentalsArray);
+
   return (
     <div className="adminRentalDash">
       <div className="adminRentalDash-title">
@@ -56,11 +58,14 @@ export default function AdminRentalDash({ props }) {
           <table cellSpacing={0}>
             <tr>
               <th>Car ID</th>
-              <th>Location ID</th>
+              <th>PickUp Location ID</th>
+              <th>DropOff Location ID</th>
               <th>User ID</th>
               <th>Rental Start Date</th>
               <th>Rental End Date</th>
               <th>Rental Price</th>
+              <th>Payment Status</th>
+              <th>Transaction ID</th>
               <th>Payment Status</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -69,12 +74,24 @@ export default function AdminRentalDash({ props }) {
               return (
                 <tr key={rental._id}>
                   <td>{rental.carID}</td>
-                  <td>{rental.locationID}</td>
+                  <td>{rental.locationIDPickUp}</td>
+                  <td>{rental.locationIDDropOff}</td>
                   <td>{rental.userID}</td>
                   <td>{rental.rentalStartDate}</td>
                   <td>{rental.rentalEndDate}</td>
                   <td>{rental.rentalPrice}</td>
                   <td>{rental.paymentStatus}</td>
+                  <td>{rental.transactionID}</td>
+                  <td
+                    className={
+                      rental.paymentStatus
+                        ? "paid order-history-card-payment-status"
+                        : "unpaid order-history-card-payment-status"
+                    }
+                    style={{ textAlign: "center" }}
+                  >
+                    {rental.paymentStatus ? "Paid" : "Unpaid"}
+                  </td>
                   <td
                     style={{ cursor: "pointer" }}
                     onClick={(e) => handleEditRental(e, rental)}

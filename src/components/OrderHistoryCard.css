@@ -1,86 +1,98 @@
-.orderHistory-orders > article {
-  background-color: white;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.order-history-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
   padding: 20px;
-  margin: 10px 0;
 }
 
-.orderHistory-order-card-title {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.orderHistory-order-card-date {
-  padding: 10px 0;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.orderHistory-order-card-product {
+.order-history-card-header {
   display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-}
-
-.orderHistory-order-card-product > figure {
-  border-radius: 10px;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-right: 20px;
 }
 
-.orderHistory-order-card-product > figure > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.order-history-card-title {
+  font-size: 24px;
+  margin: 0;
 }
 
-.orderHistory-order-card-product-desc {
-  height: 100px;
-  flex: 8.5;
+.order-history-card-payment-status {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.order-history-card-payment-status.paid {
+  background-color: #3cb371;
+}
+
+.order-history-card-payment-status.unpaid {
+  background-color: #ff6347;
+}
+
+.order-history-card-date {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.orderHistory-order-card-product-desc > div:last-child {
+  align-items: center;
   margin-top: 10px;
 }
 
-.orderHistory-order-card-product-desc > div > span {
+.order-history-card-date-label {
+  font-size: 16px;
   margin-right: 10px;
-  padding-right: 10px;
-  border-right: 1px solid #e6e6e6;
-  font-size: 14px;
 }
 
-.orderHistory-order-card-product-desc > div > span:last-child {
-  border-right: none;
-}
-
-.orderHistory-order-card-product-desc > div > span:first-child {
-  font-weight: 500;
+.order-history-card-date-value {
   font-size: 16px;
 }
 
-.orderHistory-order-card-product-price {
-  flex: 1.5;
+.order-history-card-product {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.orderHistory-order-card-product-price > div:first-child {
-  font-weight: 700;
+.order-history-card-product-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.order-history-card-product-details {
+  flex: 1;
+}
+
+.order-history-card-product-title {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.order-history-card-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.order-history-card-product-meta-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 10px;
   font-size: 16px;
 }
 
-.orderHistory-order-card-product-price > div:last-child {
-  font-size: 14px;
-  margin-top: 5px;
+.order-history-card-product-meta-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.order-history-card-product-price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
 }

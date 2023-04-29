@@ -22,37 +22,69 @@ const OrderHistoryCard = ({ order }) => {
     })();
   }, []);
 
+  console.log(order);
+
   return (
-    <article>
-      <section className="orderHistory-order-card">
-        <div className="orderHistory-order-card-title">
-          Order ID: {order._id}
+    <article class="order-history-card">
+      <div class="order-history-card-header">
+        <h2 class="order-history-card-title">Order #{order._id}</h2>
+        <div className={ order.paymentStatus ? 'paid order-history-card-payment-status' : 'unpaid order-history-card-payment-status' }>
+          {order.paymentStatus ? "Paid" : "Unpaid"}
         </div>
-        <div className="orderHistory-order-card-date">
-          <span>PickUp date:</span> &nbsp;<span>{order.rentalStartDate}</span>
-        </div>
-        {car && (
-          <div className="orderHistory-order-card-product">
-            <figure>
-              <img src={API_URL + `/car/fetchImage/${car.img}`} alt="car" />
-            </figure>
-            <div className="orderHistory-order-card-product-desc">
-              <div className="orderHistory-order-card-product-desc-title">
-                {car.make + " " + car.model}
-              </div>
-              <div>
-                <span>{car.color}</span>
-                <span>{car.mileage + "kmpl"}</span>
-                <span>{car.carType}</span>
-              </div>
-            </div>
-            <div className="orderHistory-order-card-product-price">
-              <div>&#8377;{order.rentalPrice/100}</div>
-              <div>{car.carType}</div>
-            </div>
+      </div>
+      <div class="order-history-card-content">
+        <div class="order-history-card-date">
+          <div class="order-history-card-date-label">Pickup:</div>
+          <div class="order-history-card-date-value">
+            {order.rentalStartDate} @ {order.rentalStartTime}
           </div>
-        )}
-      </section>
+        </div>
+        <div class="order-history-card-date">
+          <div class="order-history-card-date-label">Return:</div>
+          <div class="order-history-card-date-value">
+            {order.rentalEndDate} @ {order.rentalEndTime}
+          </div>
+        </div>
+        <div class="order-history-card-product">
+          {car && (
+            <>
+              <img
+                src={API_URL + `/car/fetchImage/${car.img}`}
+                alt={car.make + car.model}
+                class="order-history-card-product-image"
+              />
+              <div class="order-history-card-product-details">
+                <div class="order-history-card-product-title">
+                  {car.make} {car.model}
+                </div>
+                <div class="order-history-card-product-meta">
+                  <div class="order-history-card-product-meta-item">
+                    <span class="order-history-card-product-meta-label">
+                      Color:
+                    </span>
+                    {car.color}
+                  </div>
+                  <div class="order-history-card-product-meta-item">
+                    <span class="order-history-card-product-meta-label">
+                      Mileage:
+                    </span>
+                    {car.mileage}kmpl
+                  </div>
+                  <div class="order-history-card-product-meta-item">
+                    <span class="order-history-card-product-meta-label">
+                      Type:
+                    </span>
+                    {car.carType}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+          <div class="order-history-card-product-price">
+            &#8377;{order.rentalPrice / 100}
+          </div>
+        </div>
+      </div>
     </article>
   );
 };

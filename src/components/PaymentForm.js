@@ -48,7 +48,6 @@ export default function PaymentForm({ props }) {
             msg: "Payment succeeded!",
             _id: dataID,
           });
-          console.log("dataID >>", dataID);
           changePaymentStatusToTrue(dataID).then(() => {
             navigate(
               `/orderHistory?paymentIntentStatus=${paymentIntent.status}`

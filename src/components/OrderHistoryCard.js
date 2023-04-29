@@ -22,8 +22,6 @@ const OrderHistoryCard = ({ order }) => {
     })();
   }, []);
 
-  console.log(order);
-
   return (
     <article class="order-history-card">
       <div class="order-history-card-header">

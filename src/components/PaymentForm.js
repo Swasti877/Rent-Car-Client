@@ -48,7 +48,7 @@ export default function PaymentForm({ props }) {
             msg: "Payment succeeded!",
             _id: dataID,
           });
-          changePaymentStatusToTrue(dataID).then(() => {
+          changePaymentStatusToTrue(dataID, clientSecret).then(() => {
             navigate(
               `/orderHistory?paymentIntentStatus=${paymentIntent.status}`
             ); // after changing value navigate back to orderHistory Page
@@ -79,7 +79,7 @@ export default function PaymentForm({ props }) {
     });
   }, [stripe]);
 
-  const changePaymentStatusToTrue = (_id) => {
+  const changePaymentStatusToTrue = (_id, clientSecret) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await fetch(API_URL + "/rental/changeValue", {
@@ -87,6 +87,7 @@ export default function PaymentForm({ props }) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             _id,
+            transactionID: clientSecret,
           }),
         });
 

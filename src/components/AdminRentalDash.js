@@ -64,9 +64,9 @@ export default function AdminRentalDash({ props }) {
               <th>Rental Start Date</th>
               <th>Rental End Date</th>
               <th>Rental Price</th>
-              <th>Payment Status</th>
               <th>Transaction ID</th>
               <th>Payment Status</th>
+              <th>Charge Extra</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -80,17 +80,18 @@ export default function AdminRentalDash({ props }) {
                   <td>{rental.rentalStartDate}</td>
                   <td>{rental.rentalEndDate}</td>
                   <td>{rental.rentalPrice}</td>
-                  <td>{rental.paymentStatus}</td>
                   <td>{rental.transactionID}</td>
-                  <td
-                    className={
-                      rental.paymentStatus
-                        ? "paid order-history-card-payment-status"
-                        : "unpaid order-history-card-payment-status"
-                    }
-                    style={{ textAlign: "center" }}
-                  >
-                    {rental.paymentStatus ? "Paid" : "Unpaid"}
+                  <td>
+                    <div
+                      className={
+                        rental.paymentStatus
+                          ? "paid order-history-card-payment-status"
+                          : "unpaid order-history-card-payment-status"
+                      }
+                      style={{ textAlign: "center" }}
+                    >
+                      {rental.paymentStatus ? "Paid" : "Unpaid"}
+                    </div>
                   </td>
                   <td
                     style={{ cursor: "pointer" }}

@@ -15,8 +15,3 @@
 .adminRentalDash-desc-table > table > tr:nth-child(odd) {
   background-color: var(--md-sys-color-primary-container-light);
 }
-
-.adminRentalDash-desc-table table tr td {
-  margin-top: 10px !important;
-  background-color: red;
-}

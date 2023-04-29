@@ -22,7 +22,7 @@
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 50px;
-  color: #fff;
+  color: #F5F5F5;
   font-size: 14px;
 }
 
@@ -34,18 +34,18 @@
   background-color: #ff6347;
 }
 
-.order-history-card-date {
+.order-history-card-date, .order-history-card-transaction {
   display: flex;
   align-items: center;
   margin-top: 10px;
 }
 
-.order-history-card-date-label {
+.order-history-card-date-label, .order-history-card-transaction-label {
   font-size: 16px;
   margin-right: 10px;
 }
 
-.order-history-card-date-value {
+.order-history-card-date-value, .order-history-card-transaction-value {
   font-size: 16px;
 }
 

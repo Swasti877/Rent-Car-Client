@@ -5,6 +5,10 @@ import config from "../constant";
 const OrderHistoryCard = ({ order }) => {
   const { API_URL } = config;
   const [car, setCar] = useState({}); // A single car detail which is Yet to be fetched
+  const [location, setLocation] = useState({
+    pickUp: "",
+    dropOff: "",
+  });
 
   useEffect(() => {
     (async () => {
@@ -19,6 +23,22 @@ const OrderHistoryCard = ({ order }) => {
         const data = await response.json();
         setCar(data.car[0]);
       }
+
+      const dropOff = await fetch(
+        API_URL + `/location/fetchName/${order.locationIDDropOff}`,
+        { method: "GET" }
+      );
+      const pickUp = await fetch(
+        API_URL + `/location/fetchName/${order.locationIDPickUp}`,
+        { method: "GET" }
+      );
+      const pickUpData = await pickUp.json();
+      const dropOFfData = await dropOff.json();
+      setLocation({
+        ...location,
+        pickUp: pickUpData.locationName,
+        dropOff: dropOFfData.locationName,
+      });
     })();
   }, []);
 
@@ -26,21 +46,35 @@ const OrderHistoryCard = ({ order }) => {
     <article class="order-history-card">
       <div class="order-history-card-header">
         <h2 class="order-history-card-title">Order #{order._id}</h2>
-        <div className={ order.paymentStatus ? 'paid order-history-card-payment-status' : 'unpaid order-history-card-payment-status' }>
+        <div
+          className={
+            order.paymentStatus
+              ? "paid order-history-card-payment-status"
+              : "unpaid order-history-card-payment-status"
+          }
+        >
           {order.paymentStatus ? "Paid" : "Unpaid"}
         </div>
       </div>
       <div class="order-history-card-content">
+        <div class="order-history-card-transaction">
+          <div class="order-history-card-transaction-label">
+            Transaction ID:
+          </div>
+          <div class="order-history-card-transaction-value">
+            {order.transactionID}
+          </div>
+        </div>
         <div class="order-history-card-date">
           <div class="order-history-card-date-label">Pickup:</div>
           <div class="order-history-card-date-value">
-            {order.rentalStartDate} @ {order.rentalStartTime}
+            {order.rentalStartDate} @ {order.rentalStartTime} -{location.pickUp}
           </div>
         </div>
         <div class="order-history-card-date">
           <div class="order-history-card-date-label">Return:</div>
           <div class="order-history-card-date-value">
-            {order.rentalEndDate} @ {order.rentalEndTime}
+            {order.rentalEndDate} @ {order.rentalEndTime} -{location.dropOff}
           </div>
         </div>
         <div class="order-history-card-product">

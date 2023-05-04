@@ -54,8 +54,8 @@
   margin-right: 8px;
 }
 
-.bsFillPersonFill,
-.giGearStickPattern {
+.BsFillCalendarDateFill,
+.BsFillFuelPumpDieselFill {
   margin-right: 5px;
   color: var(--md-sys-color-primary);
 }

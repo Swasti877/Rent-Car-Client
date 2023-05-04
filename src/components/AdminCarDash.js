@@ -38,7 +38,7 @@ const AdminCarDash = ({ props }) => {
   return (
     <div className="adminCarDash">
       <div className="adminCarDash-title">
-        <h2>AdminCarDash</h2>
+        <h2>Car Dashboard</h2>
       </div>
       <div className="adminCarDash-button">
         <button className="primary-button" onClick={handleAddCar}>

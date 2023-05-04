@@ -66,7 +66,7 @@ export default function AdminRentalDash({ props }) {
               <th>Rental Price</th>
               <th>Transaction ID</th>
               <th>Payment Status</th>
-              <th>Charge Extra</th>
+              {/* <th>Charge Extra</th> */}
               <th>Edit</th>
               <th>Delete</th>
             </tr>

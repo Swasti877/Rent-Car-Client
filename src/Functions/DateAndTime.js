@@ -7,10 +7,11 @@ const DateAndTime = {
       currDate.getFullYear() === date.getFullYear() ||
       parseInt(currDate.getFullYear()) + 1 === date.getFullYear()
     ) {
-      if (currDate.getMonth() <= date.getMonth()) {
-        if (currDate.getDate() <= date.getDate()) {
-          return true;
-        }
+      if (
+        currDate.getMonth() <= date.getMonth() &&
+        currDate.getDate() <= date.getDate()
+      ) {
+        return true;
       }
     }
     return false;
@@ -31,9 +32,9 @@ const DateAndTime = {
     const date1 = new Date(date_1);
     const date2 = new Date(date_2);
     const diffrenceInTime = Math.abs(date1.getTime() - date2.getTime());
-    const diffrenceInDays = diffrenceInTime/(1000 * 3600 * 24);
+    const diffrenceInDays = diffrenceInTime / (1000 * 3600 * 24);
     return diffrenceInDays + 1;
-  }
+  },
 };
 
 export default DateAndTime;

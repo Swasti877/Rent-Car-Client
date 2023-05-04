@@ -1,6 +1,8 @@
 import "./carCard.css";
-import { BsFillPersonFill } from "react-icons/bs";
-import { GiGearStickPattern } from "react-icons/gi";
+import {
+  BsFillCalendarDateFill,
+  BsFillFuelPumpDieselFill,
+} from "react-icons/bs";
 import config from "../constant.js";
 import topFunction from "../Functions/scrollToPage.js";
 import {
@@ -64,8 +66,12 @@ export default function CarCard({ props }) {
           dispatch(resetBookDetails());
           navigate("/orderHistory");
         }
-      } else if(bookDetails.pickUpDate < bookDetails.dropOffDate) {
+      } else if (
+        bookDetails.pickUpDate < bookDetails.dropOffDate &&
+        DateAndTime.isCurrDateLess(bookDetails.pickUpDate)
+      ) {
         // Passed
+        console.log("test");
         dispatch(addToCart(obj));
         dispatch(resetBookDetails());
         navigate("/orderHistory");
@@ -87,14 +93,15 @@ export default function CarCard({ props }) {
         </div>
         <div className="cardCard-desc">
           <div className="cardCard-desc-capacity">
-            <BsFillPersonFill className="bsFillPersonFill" />2
+            <BsFillCalendarDateFill className="BsFillCalendarDateFill" />
+            {car.year}
           </div>
           <div className="cardCard-desc-transmission">
-            <GiGearStickPattern className="giGearStickPattern" />
-            Manual
+            <BsFillFuelPumpDieselFill className="BsFillFuelPumpDieselFill" />
+            {car.mileage}kmpl
           </div>
           <div className="cardCard-desc-price">
-            <span>${car.price_per_day}</span>/day
+            <span>&#x20B9;{car.price_per_day}</span>/day
           </div>
         </div>
         <div className="book-popup">
